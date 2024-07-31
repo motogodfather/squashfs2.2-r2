@@ -1,0 +1,32 @@
+diff -Naur old-squashfs2.2-r2/squashfs-tools/mksquashfs.c squashfs2.2-r2/squashfs-tools/mksquashfs.c
+--- old-squashfs2.2-r2/squashfs-tools/mksquashfs.c	2005-09-08 23:34:28.000000000 +0100
++++ squashfs2.2-r2/squashfs-tools/mksquashfs.c	2023-12-10 14:24:24.446286832 +0000
+@@ -39,6 +39,7 @@
+ #include <signal.h>
+ #include <setjmp.h>
+ #include <sys/mman.h>
++#include <sys/sysmacros.h>
+ 
+ #include <squashfs_fs.h>
+ #include "mksquashfs.h"
+@@ -1256,7 +1257,7 @@
+ };
+ 
+ 
+-void inline add_dir_entry(char *name, char *pathname, void *data, struct directory *dir)
++static void inline add_dir_entry(char *name, char *pathname, void *data, struct directory *dir)
+ {
+ 		if((dir->count % DIR_ENTRIES) == 0)
+ 			if((dir->list = realloc(dir->list, (dir->count + DIR_ENTRIES) * sizeof(struct dir_ent *))) == NULL)
+diff -Naur old-squashfs2.2-r2/squashfs-tools/read_fs.c squashfs2.2-r2/squashfs-tools/read_fs.c
+--- old-squashfs2.2-r2/squashfs-tools/read_fs.c	2005-09-08 00:00:39.000000000 +0100
++++ squashfs2.2-r2/squashfs-tools/read_fs.c	2023-12-10 14:24:03.966286207 +0000
+@@ -50,7 +50,7 @@
+ 
+ #define ERROR(s, args...)		fprintf(stderr, s, ## args)
+ 
+-int swap;
++static int swap;
+ 
+ int read_block(int fd, int start, int *next, unsigned char *block, squashfs_super_block *sBlk)
+ {
