@@ -6,7 +6,7 @@ Squashfs2.2-r2 修复说明
 例如，如果您在使用过程中对源码进行了修改和分发，需要按照开源协议的要求保留相应的版权声明和许可信息。同时，请尊重作者的劳动成果，合法合规地使用该源码和补丁。
 
 
-==========================================================================================================================
+==========================================================================
 
 The application of the squashfs2.2-r2 patch (update.patch) provided by Phillip Lougher can fix the problem of error reporting when compiling squashfs-tool under the latest Linux distribution.
 The download address of the original source code compressed package is: https://sourceforge.net/projects/squashfs/files/squashfs/squashfs2.2-r2/squashfs2.2-r2.tar.gz/download
